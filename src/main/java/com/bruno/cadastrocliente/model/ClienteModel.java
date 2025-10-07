@@ -21,12 +21,27 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "cliente_id")
 public class ClienteModel {
     
+	public ClienteModel(Long cliente_id, Endereco endereco, String cep, String cpf, String genero,
+			LocalDate dataNascimento, String email, String telefone, String uf, String login, String senha,
+			String nome) {
+		super();
+		this.cliente_id = cliente_id;
+		this.endereco = endereco;
+		this.cep = cep;
+		this.cpf = cpf;
+		this.genero = genero;
+		this.dataNascimento = dataNascimento;
+		this.email = email;
+		this.telefone = telefone;
+		this.uf = uf;
+		this.userName = userName;
+		this.senha = senha;
+		this.nome = nome;
+	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long cliente_id;
@@ -40,7 +55,21 @@ public class ClienteModel {
 	private String email;
 	private String telefone;
 	private String uf;
+	private String userName;
+	private String senha;
   
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 	public Long getCliente_id() {
 		return cliente_id;
 	}
@@ -98,6 +127,10 @@ public class ClienteModel {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public ClienteModel() {
+		// TODO Auto-generated constructor stub
 	}
 	public String getTelefone() {
 		return telefone;

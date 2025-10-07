@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.bruno.cadastrocliente.model.ClienteModel;
@@ -21,6 +22,9 @@ public class ClienteService {
     EnderecoService enderecoService;
     @Autowired
     EnderecoRepository enderecoRepository;
+    @Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+
     
     public List<ClienteModel> getAllClients(){
     	return clienteRepository.findAll();
@@ -32,10 +36,11 @@ public class ClienteService {
     }
     
 
-    public ClienteModel postClient(ClienteModel cliente) {
-                   
+    public ClienteModel save(ClienteModel cliente) {
+    	
+    	           cliente.setSenha(passwordEncoder.encode(cliente.getSenha()));  
                    Endereco completo = enderecoService.buscarEnderecoPorCep(cliente.getCep());
-                      
+                         
                    cliente.setEndereco(completo);
                     
                    clienteRepository.save(cliente);
@@ -52,10 +57,19 @@ public class ClienteService {
 		return clienteRepository.existsByCpf(cpf);
 		
 	}
-    
 
-           
-}       
+	public Optional<ClienteModel> findByuserName(String userName) {
+	    return clienteRepository.findByuserName(userName);
+	}
+
+
+	
+
+	}
+	
+
+
+  
         
  
    
