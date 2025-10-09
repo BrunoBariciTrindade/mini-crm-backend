@@ -1,5 +1,7 @@
 com\bruno\cadastrocliente\model\ClienteModel.class
 com\bruno\cadastrocliente\repository\ClienteRepository.class
+com\bruno\cadastrocliente\controller\AuthController.class
+com\bruno\cadastrocliente\config\WebConfig$1.class
 com\bruno\cadastrocliente\Dtos\LoginDto$LoginDTO.class
 com\bruno\cadastrocliente\Dtos\LoginDto.class
 com\bruno\cadastrocliente\repository\EnderecoRepository.class
@@ -7,11 +9,14 @@ com\bruno\cadastrocliente\service\ClienteService.class
 com\bruno\cadastrocliente\model\Product.class
 com\bruno\cadastrocliente\config\SecurityConfig.class
 com\bruno\cadastrocliente\config\JwtUtil.class
+com\bruno\cadastrocliente\controller\AuthController$LoginRequest.class
 com\bruno\cadastrocliente\SistemaECommerceApplication.class
 com\bruno\cadastrocliente\config\JwtFilter.class
 com\bruno\cadastrocliente\repository\ProductRepository.class
 com\bruno\cadastrocliente\config\FilterConfig.class
+com\bruno\cadastrocliente\controller\AuthController$TokenResponse.class
 com\bruno\cadastrocliente\service\EnderecoService.class
 com\bruno\cadastrocliente\controller\ProductController.class
+com\bruno\cadastrocliente\config\WebConfig.class
 com\bruno\cadastrocliente\controller\ClienteController.class
 com\bruno\cadastrocliente\model\Endereco.class

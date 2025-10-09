@@ -35,7 +35,8 @@ public class JwtFilter extends OncePerRequestFilter {
             String token = authHeader.substring(7);
             String userName = jwtUtil.extractLogin(token);
 
-            Optional<ClienteModel> cliente = clienteRepo.findByuserName(userName);
+            Optional<ClienteModel> cliente = clienteRepo.findBycpf(userName);
+
             if (cliente.isPresent() && jwtUtil.validateToken(token, userName)) {
                 // Aqui você pode armazenar o cliente no contexto se quiser
                 request.setAttribute("clienteLogado", cliente.get());
