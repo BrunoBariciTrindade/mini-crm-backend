@@ -10,10 +10,10 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.1.5</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/> 
     </parent>
 
-    <!-- Ajuste para o seu projeto -->
+  
     <groupId>com.bruno</groupId>
     <artifactId>mini-crm-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -48,7 +48,7 @@
 </dependency>
 
 
-        <!-- Spring Security (inclui BCryptPasswordEncoder) -->
+        <!-- Spring Security -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -75,7 +75,6 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- Devtools para desenvolvimento -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -83,7 +82,6 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- Testes -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -95,13 +93,11 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- (Opcional) Se você precisar de webflux, deixe esse: -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
 
-        <!-- (Opcional) Se usar web services SOAP, deixe esse: -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web-services</artifactId>
@@ -110,7 +106,6 @@
 
     <build>
         <plugins>
-            <!-- Plugin para garantir compilação com Java 17 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -121,7 +116,6 @@
                 </configuration>
             </plugin>
 
-            <!-- Plugin para Spring Boot -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
