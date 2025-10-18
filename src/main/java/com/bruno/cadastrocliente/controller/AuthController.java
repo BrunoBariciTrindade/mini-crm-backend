@@ -76,9 +76,8 @@ public class AuthController {
         private String cpf;
         private String senha;
 
-        // getters e setters
         public Object getCpf() {
-            // TODO Auto-generated method stub
+           
             return cpf;
         }
 

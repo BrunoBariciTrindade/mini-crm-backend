@@ -1,6 +1,7 @@
 package com.bruno.cadastrocliente.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.bruno.cadastrocliente.model.Product;
@@ -16,9 +17,9 @@ public class ProductController {
     @Autowired
     private ProductRepository repository;
 
-    @GetMapping
-    public List<Product> getAll() {
-        return repository.findAll();
+   @GetMapping
+    public ResponseEntity<List<Product>> listar() {
+        return ResponseEntity.ok(repository.findAll());
     }
 
     @GetMapping("/{id}")
@@ -26,9 +27,9 @@ public class ProductController {
         return repository.findById(id).orElse(null);
     }
 
-    @PostMapping
-    public Product create(@RequestBody Product product) {
-        return repository.save(product);
+       @PostMapping("/salvar")
+    public ResponseEntity<Product> salvar(@RequestBody Product product) {
+        return ResponseEntity.ok(repository.save(product));
     }
 
     @PutMapping("/{id}")
