@@ -10,20 +10,29 @@ public class ItemPedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long productId;
-
     private String productName;
 
-    private Double productPrice;
+    private Double precoUnitario;
 
-    private Integer quantity;
+    public Double getPrecoUnitario() {
+        return precoUnitario;
+    }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    public void setPrecoUnitario(Double precoUnitario) {
+        this.precoUnitario = precoUnitario;
+    }
+
+    private Integer quantidade;
+
+    @ManyToOne
     @JoinColumn(name = "pedido_id")
     private Pedido pedido;
 
-    // Getters e Setters
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
 
+    // Getters e Setters
     public Long getId() {
         return id;
     }
@@ -32,13 +41,14 @@ public class ItemPedido {
         this.id = id;
     }
 
-    public Long getProductId() {
-        return productId;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    public void setProduct(Product product) {
+        this.product = product;
     }
+    
 
     public String getProductName() {
         return productName;
@@ -48,20 +58,13 @@ public class ItemPedido {
         this.productName = productName;
     }
 
-    public Double getProductPrice() {
-        return productPrice;
+
+    public Integer getQuantidade() {
+        return quantidade;
     }
 
-    public void setProductPrice(Double productPrice) {
-        this.productPrice = productPrice;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
     }
 
     public Pedido getPedido() {

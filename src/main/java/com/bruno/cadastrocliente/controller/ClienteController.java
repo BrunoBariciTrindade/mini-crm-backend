@@ -78,7 +78,7 @@ public class ClienteController {
 	    // Retorna apenas os dados necessários
 	    Map<String, Object> response = new HashMap<>();
 	    response.put("token", token);
-	    response.put("clienteId", cliente.getCliente_id());
+	    response.put("clienteId", cliente.getClienteId());
 	    response.put("nome", cliente.getNome());
 
 	    return ResponseEntity.ok(response);

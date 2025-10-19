@@ -22,7 +22,7 @@ public class PedidoController {
     }
 
     @GetMapping("/listar")
-    public ResponseEntity<List<Pedido>> listarPedidos() {
+    public ResponseEntity <List<Pedido>> listarPedidos() {
         List<Pedido> pedidos = pedidoService.listarPedidos();
         return ResponseEntity.ok(pedidos);
     }

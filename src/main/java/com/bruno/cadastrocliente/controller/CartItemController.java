@@ -40,7 +40,7 @@ public class CartItemController {
 
         CartItem item = new CartItem();
         item.setProduct(product);
-        item.setQuantity(dto.getQuantity());
+        item.setQuantidade(dto.getQuantidade());
 
         CartItem savedItem = cartItemRepository.save(item);
         return ResponseEntity.ok(savedItem);

@@ -45,7 +45,7 @@ public class ClienteService {
                     
                    clienteRepository.save(cliente);
                     
-                   completo.setClienteModel(cliente);
+                   completo.setCliente(cliente);
                     
                    enderecoRepository.save(completo);
                     

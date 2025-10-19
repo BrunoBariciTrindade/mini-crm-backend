@@ -1,5 +1,6 @@
 package com.bruno.cadastrocliente.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -10,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -17,21 +19,28 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Data
-@NoArgsConstructor
-@Getter
-@Setter
-@AllArgsConstructor
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "endereco_id")
 
 public class Endereco {
+        
+	    @OneToOne(mappedBy = "endereco")
+		@JsonBackReference
+        private ClienteModel cliente;
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         private Long endereco_id;
 	    private String cep;
 		private String logradouro;
 	    private String complemento;
-	    private String bairro;
+	    public ClienteModel getCliente() {
+			return cliente;
+		}
+
+		public void setCliente(ClienteModel cliente) {
+			this.cliente = cliente;
+		}
+
+		private String bairro;
 	    private String uf;            
 	    private String codigoIbge;
 	    private String cidade;
@@ -41,10 +50,7 @@ public class Endereco {
 	    public void setCidade(String cidade) {
 			this.cidade = cidade;
 		}
-		@ManyToOne
-	    @JoinColumn(name = "cliente_id")  
-	    private ClienteModel clienteModel;
-	    
+		
 	    public Long getEndereco_id() {
 			return endereco_id;
 		}
@@ -101,12 +107,7 @@ public class Endereco {
 		public void setCodigoSiafi(String codigoSiafi) {
 			this.codigoSiafi = codigoSiafi;
 		}
-		public ClienteModel getClienteModel() {
-			return clienteModel;
-		}
-		public void setClienteModel(ClienteModel clienteModel) {
-			this.clienteModel = clienteModel;
-		}
+	
 		public String getCidade() {
 		
 			return cidade;
