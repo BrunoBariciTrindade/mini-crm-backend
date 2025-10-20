@@ -5,35 +5,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Pedido {
-
-    @Id
+@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private Double total;
 
     private int quantidade;
-    
-    public ClienteModel getCliente() {
-        return cliente;
-    }
 
-    public void setCliente(ClienteModel cliente) {
-        this.cliente = cliente;
-    }
-
-    // Pedido.java
     @ManyToOne
     @JoinColumn(name = "cliente_id")
-    @JsonBackReference
+    @JsonBackReference  // Evita serializar novamente o cliente e o ciclo
     private ClienteModel cliente;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference  // Serializa a lista de itens, "pai" da relação
     private List<ItemPedido> itens = new ArrayList<>();
-
     // Getters e Setters
 
     public Long getId() {
@@ -43,7 +34,6 @@ public class Pedido {
     public void setId(Long id) {
         this.id = id;
     }
-
 
     public Double getTotal() {
         return total;
@@ -81,4 +71,12 @@ public class Pedido {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
+     public ClienteModel getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteModel cliente) {
+        this.cliente = cliente;
+    }
+
 }

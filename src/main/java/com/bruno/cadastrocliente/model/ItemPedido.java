@@ -1,11 +1,20 @@
 package com.bruno.cadastrocliente.model;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "itens_pedido")
 public class ItemPedido {
 
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -14,18 +23,11 @@ public class ItemPedido {
 
     private Double precoUnitario;
 
-    public Double getPrecoUnitario() {
-        return precoUnitario;
-    }
-
-    public void setPrecoUnitario(Double precoUnitario) {
-        this.precoUnitario = precoUnitario;
-    }
-
     private Integer quantidade;
 
     @ManyToOne
     @JoinColumn(name = "pedido_id")
+    @JsonBackReference  // Este lado é "filho", evita ciclo serializando pedido
     private Pedido pedido;
 
     @ManyToOne
@@ -73,5 +75,13 @@ public class ItemPedido {
 
     public void setPedido(Pedido pedido) {
         this.pedido = pedido;
+    }
+
+    public Double getPrecoUnitario() {
+        return precoUnitario;
+    }
+
+    public void setPrecoUnitario(Double precoUnitario) {
+        this.precoUnitario = precoUnitario;
     }
 }
